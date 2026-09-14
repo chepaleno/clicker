@@ -1,0 +1,70 @@
+.Castle__button__1 {
+  position: absolute;
+  margin-top: 210px;
+  margin-left: 400px;
+  width: 95px;
+  height: 44.8px;
+
+  /* &:hover {
+    font-weight: 700;
+    font-size: 10px
+  } */
+}
+
+.Castle__button__1::before {
+  content: "🔨Построить замок";
+}
+
+.Castle__button__1:hover::before {
+  content: "🔨 50 очков";
+}
+
+.Castle__button {
+  position: absolute;
+  margin-top: 230px;
+  margin-left: 400px;
+  width: 95px;
+  user-select: none;
+  scale: 1.2;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.Castle {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin-top: 190px;
+  margin-left: 413px;
+}
+
+.none {
+  display: none;
+}
+
+.Castle__text {
+  position: absolute;
+  margin-top: 224px;
+  margin-left: 423px;
+  font-size: 12px;
+}
+
+.lvl4Up {
+  scale: 1.2;
+}
+
+.lvl5Up {
+  scale: 1.4;
+}
+
+.lvl6Up {
+  scale: 1.6;
+}
+
+.lvl7Up {
+  scale: 3;
+  margin-left: 450px;
+  margin-top: 180px;
+}

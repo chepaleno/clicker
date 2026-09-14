@@ -1,0 +1,41 @@
+.crabDiv {
+    user-select: none
+}
+
+.fullScreenDiv {
+    width: 100vw;
+    /* Занимает всю ширину экрана */
+    height: 100vh;
+    /* Занимает всю высоту экрана */
+}
+
+.Crab {
+    font-size: 40px;
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 140px;
+}
+
+.characterText {
+    font-size: 12px;
+    position: absolute;
+    margin-top: 180px;
+    margin-left: 200px;
+}
+
+.Crab:hover {
+    cursor: pointer;
+}
+
+.crabClicked {
+    .Crab {
+        transform: scale(0.9);
+    }
+}
+
+.characterText:hover {
+    cursor: pointer;
+}
+.characterText{
+    user-select: none
+}
