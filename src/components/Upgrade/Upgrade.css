@@ -1,0 +1,36 @@
+.upgradeDmg {
+  font-size: 10px;
+  position: absolute;
+  margin-top: 260px;
+  margin-left: 128px;
+}
+
+.lvlUpButton {
+  font-size: 20px;
+  margin-top: -34px;
+  margin-left: -32px;
+  user-select: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.none {
+  display: none;
+}
+
+.Castle__button__2 {
+  position: absolute;
+  margin-top: -5px;
+  margin-left: -8px;
+  width: 95px;
+  height: 44.8px;
+}
+
+.Castle__button__2::before {
+  content: "Улучшение клешни";
+}
+
+.Castle__button__2:hover::before {
+  content: "🔨 25 очков";
+}

@@ -1,41 +1,67 @@
 .crabDiv {
-    user-select: none
+  user-select: none;
+}
+
+.none {
+  display: none;
 }
 
 .fullScreenDiv {
-    width: 100vw;
-    /* Занимает всю ширину экрана */
-    height: 100vh;
-    /* Занимает всю высоту экрана */
+  width: 100vw;
+  height: 100vh;
 }
 
 .Crab {
-    font-size: 40px;
-    position: absolute;
-    margin-top: 200px;
-    margin-left: 140px;
-}
-
-.characterText {
-    font-size: 12px;
-    position: absolute;
-    margin-top: 180px;
-    margin-left: 200px;
+  font-size: 40px;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 140px;
 }
 
 .Crab:hover {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.Blur {
+  filter: grayscale(100%);
 }
 
 .crabClicked {
-    .Crab {
-        transform: scale(0.9);
-    }
+  transform: scale(0.9);
 }
 
 .characterText:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
-.characterText{
-    user-select: none
+.characterText {
+  user-select: none;
+}
+
+.Z {
+  font-size: 20px;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 185px;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 200px;
+    opacity: 1;
+  }
+
+  to {
+    margin-top: 180px;
+    opacity: 0;
+  }
+}
+.click {
+  font-size: 10px;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 125px;
+  opacity: 0;
+}
+.animation {
+  animation: slidein 60ms;
 }
