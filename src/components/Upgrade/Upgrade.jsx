@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "./Upgrade.css";
 import "../../styles/global.css";
+import { ClickerContext } from "../../context/ClickerContext";
 
 const Upgrade = (props) => {
   const {
@@ -8,10 +9,10 @@ const Upgrade = (props) => {
     count,
     setCount,
     price,
-    upgradeLvl,
-    setUpgradeLvl,
     islvlMax,
   } = props;
+
+  const {dmgLvl, setDmgLvl} = useContext(ClickerContext)
 
   const isHaveMoneyForUpgrade = useRef(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -25,7 +26,7 @@ const Upgrade = (props) => {
   const onUpgradeClick = () => {
     if (count >= price) {
       isHaveMoneyForUpgrade.current = true;
-      setUpgradeLvl((prev) => prev + 1);
+      setDmgLvl((prev) => prev + 1);
       setCount(count - price);
       setIsClicked(true);
       setIsButtonPressed(true);
@@ -43,7 +44,7 @@ const Upgrade = (props) => {
 
       <div className={`${isButtonPressed ? "" : "none"}`}>
         {children} <br />
-        🆙lvl:{`${islvlMax ? "max" : upgradeLvl} `} <br /> 🥮цена:
+        🆙lvl:{`${islvlMax ? "max" : dmgLvl} `} <br /> 🥮цена:
         {`${islvlMax ? "max" : price}`}
       </div>
       <div

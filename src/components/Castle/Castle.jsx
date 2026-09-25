@@ -1,10 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import "../../styles/global.css";
 import "./Castle.css";
+import { ClickerContext } from "../../context/ClickerContext";
 
 const Castle = (props) => {
   const { count, setCount } = props;
-  const [castleCount, setCastleCount] = useState(0);
+  // const [castleLvl, setCastleLvl] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
   const price = useRef(50);
   let isLvl4 = false;
@@ -13,9 +14,10 @@ const Castle = (props) => {
   let isLvl7 = false;
   let isVisble = false;
   let lvlCount;
-  // let price = 50;
   let income = 0;
 
+  const { castleLvl, setCastleLvl } = useContext(ClickerContext);
+  
 
   useEffect(() => {
     let timerId;
@@ -23,46 +25,46 @@ const Castle = (props) => {
       setCount((prev) => prev + income);
     }, 1000);
     return () => clearInterval(timerId);
-  }, [castleCount]);
+  }, [castleLvl]);
 
   if (price.current - 1 >= count) {
     isVisble = true;
   }
 
-  if (castleCount === 1) {
+  if (castleLvl === 1) {
     income = 1;
-    lvlCount = Array.from({ length: castleCount }, () => "🛕");
+    lvlCount = Array.from({ length: castleLvl }, () => "🛕");
     price.current = 150;
   }
-  if (castleCount === 2) {
-    lvlCount = Array.from({ length: castleCount }, () => "🛕");
+  if (castleLvl === 2) {
+    lvlCount = Array.from({ length: castleLvl }, () => "🛕");
     price.current = 400;
     income = 4;
   }
-  if (castleCount === 3) {
-    lvlCount = Array.from({ length: castleCount }, () => "🛕");
+  if (castleLvl === 3) {
+    lvlCount = Array.from({ length: castleLvl }, () => "🛕");
     price.current = 1000;
     income = 12;
   }
-  if (castleCount === 4) {
+  if (castleLvl === 4) {
     lvlCount = "🛕🛕🛕";
     isLvl4 = true;
     price.current = 2500;
     income = 35;
   }
-  if (castleCount === 5) {
+  if (castleLvl === 5) {
     lvlCount = "🛕🛕🛕";
     isLvl5 = true;
     price.current = 6000;
     income = 100;
   }
-  if (castleCount === 6) {
+  if (castleLvl === 6) {
     lvlCount = "🛕🛕🛕";
     isLvl6 = true;
     price.current = 15000;
     income = 280;
   }
-  if (castleCount === 7) {
+  if (castleLvl === 7) {
     lvlCount = "🛕";
     isLvl7 = true;
     income = 800;
@@ -71,7 +73,7 @@ const Castle = (props) => {
   const onClick = () => {
     if (count >= price.current) {
       setCount(count - price.current);
-      setCastleCount((prev) => prev + 1);
+      setCastleLvl((prev) => prev + 1);
       setIsClicked(true);
     } else {
       console.log("недостаточно средств");
@@ -96,7 +98,7 @@ const Castle = (props) => {
         ⬆️
       </div>
       <div className={`Castle__text ${isClicked ? "" : "none"}`}>
-        lvl:{`${isLvl7 ? "max" : castleCount} `} <br />
+        lvl:{`${isLvl7 ? "max" : castleLvl} `} <br />
         цена:{`${isLvl7 ? "max" : price.current} `}
         <br /> доход:{income}
       </div>

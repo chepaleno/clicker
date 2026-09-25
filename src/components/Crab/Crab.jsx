@@ -11,8 +11,10 @@ const Crab = (props) => {
   const [isClickedForAnimation, setIsClickedForAnimation] = useState(false);
   const [clickedLimit, setClickedLimit] = useState(0);
   const [crabColdown, setCrabColdown] = useState(true);
-  const [upgradeLvl, setUpgradeLvl] = useState(0);
+  // const [dmgLvl, setDmgLvl] = useState(0);
   const { chisloClicovPoText, setCrabText } = useContext(ClickerContext);
+
+  const {dmgLvl, setDmgLvl} = useContext(ClickerContext)
 
   const crabUp = () => {
     setIsClicked(true);
@@ -26,7 +28,7 @@ const Crab = (props) => {
   const price = useRef(25);
   let islvlMax = false;
 
-  switch (upgradeLvl) {
+  switch (dmgLvl) {
     case 1:
       MultiClick.current = 2;
       price.current = 75;
@@ -70,7 +72,6 @@ const Crab = (props) => {
           setCrabText("");
         }, 2000);
       }
-      console.log(chisloClicovPoText);
     } else {
       console.log("чил");
     }
@@ -100,8 +101,8 @@ const Crab = (props) => {
       <div className="upgradeDmg">
         <Upgrade
           setCount={setCount}
-          upgradeLvl={upgradeLvl}
-          setUpgradeLvl={setUpgradeLvl}
+          dmgLvl={dmgLvl}
+          setDmgLvl={setDmgLvl}
           children={`🔨урон:${MultiClick.current}`}
           count={count}
           price={price.current}
