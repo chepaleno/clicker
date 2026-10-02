@@ -4,23 +4,20 @@ import "../../styles/global.css";
 import { ClickerContext } from "../../context/ClickerContext";
 
 const Upgrade = (props) => {
-  const {
-    children,
-    count,
-    setCount,
-    price,
-    islvlMax,
-  } = props;
-
-  const {dmgLvl, setDmgLvl} = useContext(ClickerContext)
-
+  const { children, count, setCount, price, islvlMax } = props;
+  const { dmgLvl, setDmgLvl } = useContext(ClickerContext);
   const isHaveMoneyForUpgrade = useRef(false);
-  const [isClicked, setIsClicked] = useState(false);
-  const [isButtonPressed, setIsButtonPressed] = useState(false);
+  const isButtonPressed = useRef(false)
+  let isClicked = false;
   let isVisble = false;
-  
+
   if (price - 1 >= count) {
     isVisble = true;
+  }
+
+  if (dmgLvl >= 1) {
+    isButtonPressed.current = true;
+    isClicked = true
   }
 
   const onUpgradeClick = () => {
@@ -28,8 +25,7 @@ const Upgrade = (props) => {
       isHaveMoneyForUpgrade.current = true;
       setDmgLvl((prev) => prev + 1);
       setCount(count - price);
-      setIsClicked(true);
-      setIsButtonPressed(true);
+      isClicked = true
     } else {
       console.log("недостаточно средств");
     }
@@ -42,14 +38,14 @@ const Upgrade = (props) => {
         onClick={onUpgradeClick}
       ></button>
 
-      <div className={`${isButtonPressed ? "" : "none"}`}>
+      <div className={`${isButtonPressed.current ? "" : "none"}`}>
         {children} <br />
         🆙lvl:{`${islvlMax ? "max" : dmgLvl} `} <br /> 🥮цена:
         {`${islvlMax ? "max" : price}`}
       </div>
       <div
         onClick={onUpgradeClick}
-        className={`lvlUpButton ${islvlMax ? "none" : ""} ${isVisble ? "none" : ""} ${isButtonPressed ? "" : "none"}`}
+        className={`lvlUpButton ${islvlMax ? "none" : ""} ${isVisble ? "none" : ""} ${isButtonPressed.current ? "" : "none"}`}
       >
         ⬆️
       </div>

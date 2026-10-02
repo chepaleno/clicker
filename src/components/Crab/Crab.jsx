@@ -4,17 +4,24 @@ import "./Crab.css";
 import "../Upgrade/Upgrade.css";
 import Dialog from "../Dialog/Dialog";
 import { ClickerContext } from "../../context/ClickerContext";
+import PreBoss from "../PreBoss/PreBoss";
 
 const Crab = (props) => {
-  const { setCount, count } = props;
+  const { setCount, count, setIsMuted, audioRef } = props;
   const [isClicked, setIsClicked] = useState(false);
   const [isClickedForAnimation, setIsClickedForAnimation] = useState(false);
   const [clickedLimit, setClickedLimit] = useState(0);
   const [crabColdown, setCrabColdown] = useState(true);
+  const [bossCount, setBossCount] = useState(0);
   // const [dmgLvl, setDmgLvl] = useState(0);
-  const { chisloClicovPoText, setCrabText } = useContext(ClickerContext);
+  // const { chisloClicovPoText, setCrabText } = useContext(ClickerContext);
 
-  const {dmgLvl, setDmgLvl} = useContext(ClickerContext)
+  const {
+    dmgLvl,
+    setDmgLvl,
+    setCrabText,
+    // MultiClick
+  } = useContext(ClickerContext);
 
   const crabUp = () => {
     setIsClicked(true);
@@ -27,6 +34,19 @@ const Crab = (props) => {
   const isTheFirstMessage = useRef(true);
   const price = useRef(25);
   let islvlMax = false;
+
+  if (count > 0) {
+    isTheFirstMessage.current = false;
+  }
+
+  // if (bossCount === 10) {
+  //   setCrabText("пиздец");
+  //   setTimeout(() => {
+  //     setCrabText("");
+  //   }, 1000);
+  // }
+  // if (bossCount === 100) {
+  // }
 
   switch (dmgLvl) {
     case 1:
@@ -64,7 +84,15 @@ const Crab = (props) => {
       setClickedLimit((prev) => {
         return prev + 1;
       });
+      setBossCount((prev) => {
+        return prev + 1;
+      });
       crabUp();
+
+      setIsMuted(false);
+      audioRef.current.play();
+      audioRef.current.volume = 0.3;
+
       if (isTheFirstMessage.current) {
         isTheFirstMessage.current = false;
         setCrabText("Поздравляю с первым кликом");
@@ -113,6 +141,7 @@ const Crab = (props) => {
       <div className={`click ${isClickedForAnimation ? "animation" : ""}`}>
         +{MultiClick.current}
       </div>
+      <PreBoss bossCount={bossCount} setBossCount={setBossCount} />
     </div>
   );
 };

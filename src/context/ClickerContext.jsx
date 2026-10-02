@@ -3,17 +3,14 @@ import { createContext, useState } from "react";
 export const ClickerContext = createContext({});
 
 export const ClickerProvider = ({ children }) => {
-  const [count, setCount] = useState(() => {
-    const savedClick = localStorage.getItem("save");
-    if (savedClick) {
-      return +savedClick;
-    } else return 0;
-  });
-
-  const [crabText, setCrabText] = useState("Привет, нажми на текст");
-  const [chisloClicovPoText, setChisloClicovPoText] = useState(0);
-  const [dmgLvl, setDmgLvl] = useState(0);
-  const [castleLvl, setCastleLvl] = useState(0);
+  const initional = JSON.parse(localStorage.getItem('clickerSave')) || {}
+  // console.log(initional)
+  // console.log(initional.count)
+  const [count, setCount] = useState(initional.count ?? 0);
+  const [crabText, setCrabText] = useState(initional.crabText ?? "Привет, нажми на текст");
+  const [chisloClicovPoText, setChisloClicovPoText] = useState(initional.chisloClicovPoText ?? 0);
+  const [dmgLvl, setDmgLvl] = useState(initional.dmgLvl ?? 0);
+  const [castleLvl, setCastleLvl] = useState(initional.castleLvl ?? 0);
 
   const value = {
     crabText,

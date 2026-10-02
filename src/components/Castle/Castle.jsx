@@ -5,8 +5,10 @@ import { ClickerContext } from "../../context/ClickerContext";
 
 const Castle = (props) => {
   const { count, setCount } = props;
+  const { castleLvl, setCastleLvl } = useContext(ClickerContext);
   // const [castleLvl, setCastleLvl] = useState(0);
-  const [isClicked, setIsClicked] = useState(false);
+  // const [isClicked, setIsClicked] = useState(false);
+  let isClicked = false;
   const price = useRef(50);
   let isLvl4 = false;
   let isLvl5 = false;
@@ -15,9 +17,6 @@ const Castle = (props) => {
   let isVisble = false;
   let lvlCount;
   let income = 0;
-
-  const { castleLvl, setCastleLvl } = useContext(ClickerContext);
-  
 
   useEffect(() => {
     let timerId;
@@ -29,6 +28,10 @@ const Castle = (props) => {
 
   if (price.current - 1 >= count) {
     isVisble = true;
+  }
+
+  if (castleLvl >= 1) {
+    isClicked = true;
   }
 
   if (castleLvl === 1) {
@@ -74,7 +77,7 @@ const Castle = (props) => {
     if (count >= price.current) {
       setCount(count - price.current);
       setCastleLvl((prev) => prev + 1);
-      setIsClicked(true);
+      isClicked = true;
     } else {
       console.log("недостаточно средств");
     }
@@ -87,10 +90,25 @@ const Castle = (props) => {
       >
         {lvlCount}
       </div>
+
+
+
+
+
       <button
         className={`button Castle__button__1 ${isClicked ? "none" : ""} ${isVisble ? "none" : ""}`}
         onClick={onClick}
       ></button>
+
+
+
+
+
+
+
+
+
+
       <div
         className={`Castle__button ${isClicked ? "" : "none"} ${isLvl7 ? "none" : ""} ${isVisble ? "none" : ""}`}
         onClick={onClick}

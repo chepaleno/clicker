@@ -1,0 +1,8 @@
+.bossFullScreenDiv {
+  width: 100vw;
+  height: 100vh;
+  zoom: 45%;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+}

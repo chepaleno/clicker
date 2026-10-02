@@ -1,0 +1,63 @@
+.Boss {
+  position: absolute;
+  margin-top: 80px;
+  margin-left: 450px;
+  font-size: 60px;
+  user-select: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.bossClicked {
+  transform: scale(0.9);
+}
+
+.CrabB {
+  position: absolute;
+  margin-top: 250px;
+  margin-left: 150px;
+  font-size: 16px;
+  user-select: none;
+  /* &:hover {
+    cursor: pointer;
+  } */
+}
+
+/* .HpBar {
+  background-color: red;
+  position: absolute;
+  margin-top: 130px;
+  margin-left: 440px;
+  font-size: 10px;
+  padding-right: 100px;
+
+  &:hover {
+    transition: width ;
+  }
+  user-select: none;
+} */
+
+.hp{
+  position: absolute;
+  margin-top: 170px;
+  margin-left: 400px;
+  font-size: 16px;
+  letter-spacing: -5px;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.timer{
+  margin-left: 230px;
+  letter-spacing: -5px;
+  user-select: none;
+}
+
+.dialog{
+  position: absolute;
+  white-space: nowrap;
+  margin-top: 60px;
+  margin-left: -10px;
+  font-size: 100000px;
+}
