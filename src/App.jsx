@@ -11,7 +11,7 @@ const App = () => {
   useLocalStorage();
 
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<Home count={count} setCount={setCount} />} />
         <Route path="/boss" element={<Boss />} />
