@@ -5,7 +5,7 @@ import { ClickerContext } from "../../context/ClickerContext";
 
 const Castle = (props) => {
   const { count, setCount } = props;
-  const { castleLvl, setCastleLvl } = useContext(ClickerContext);
+  const { castleLvl, setCastleLvl, setCrabText } = useContext(ClickerContext);
   // const [castleLvl, setCastleLvl] = useState(0);
   // const [isClicked, setIsClicked] = useState(false);
   let isClicked = false;
@@ -17,6 +17,7 @@ const Castle = (props) => {
   let isVisble = false;
   let lvlCount;
   let income = 0;
+  let trigger = false;
 
   useEffect(() => {
     let timerId;
@@ -24,7 +25,7 @@ const Castle = (props) => {
       setCount((prev) => prev + income);
     }, 1000);
     return () => clearInterval(timerId);
-  }, [castleLvl]);
+  }, [castleLvl]); // работа замка
 
   if (price.current - 1 >= count) {
     isVisble = true;
@@ -78,10 +79,89 @@ const Castle = (props) => {
       setCount(count - price.current);
       setCastleLvl((prev) => prev + 1);
       isClicked = true;
+      // trigger = true
+      // console.log(trigger)
+      if (castleLvl === 0) {
+        setCrabText("Это мой дом");
+        setTimeout(() => {
+          setCrabText("");
+        }, 2000);
+        trigger = false;
+      }
+      if (castleLvl === 1) {
+        setCrabText("Мне нравится в нём жить");
+        setTimeout(() => {
+          setCrabText("");
+        }, 2000);
+      }
+      if (castleLvl === 2) {
+        setCrabText("Ого их уже 3");
+        setTimeout(() => {
+          setCrabText("");
+        }, 2000);
+      }
+      if (castleLvl === 3) {
+        setCrabText("Они растут");
+        setTimeout(() => {
+          setCrabText("");
+        }, 2000);
+      }
+      if (castleLvl === 4) {
+        setCrabText("Всё ещё растут");
+        setTimeout(() => {
+          setCrabText("");
+        }, 2000);
+      }
+      if (castleLvl === 5) {
+        setCrabText("Совсем большие");
+        setTimeout(() => {
+          setCrabText("");
+        }, 2000);
+      }
     } else {
       console.log("недостаточно средств");
     }
   };
+
+  // useEffect(() => {
+  //   if (castleLvl === 1) {
+  //     setCrabText("Это мой дом");
+  //     setTimeout(() => {
+  //       setCrabText("");
+  //     }, 2000);
+  //     trigger = false
+  //   }
+  //   if (castleLvl === 2) {
+  //     setCrabText("Мне нравится в нём жить");
+  //     setTimeout(() => {
+  //       setCrabText("");
+  //     }, 2000);
+  //   }
+  //   if (castleLvl === 3) {
+  //     setCrabText("Ого их уже 3");
+  //     setTimeout(() => {
+  //       setCrabText("");
+  //     }, 2000);
+  //   }
+  //   if (castleLvl === 4) {
+  //     setCrabText("Они растут");
+  //     setTimeout(() => {
+  //       setCrabText("");
+  //     }, 2000);
+  //   }
+  //   if (castleLvl === 5) {
+  //     setCrabText("Всё ещё растут");
+  //     setTimeout(() => {
+  //       setCrabText("");
+  //     }, 2000);
+  //   }
+  //   if (castleLvl === 6) {
+  //     setCrabText("Совсем большие");
+  //     setTimeout(() => {
+  //       setCrabText("");
+  //     }, 2000);
+  //   }
+  // }, [trigger]);
 
   return (
     <div>
@@ -91,23 +171,10 @@ const Castle = (props) => {
         {lvlCount}
       </div>
 
-
-
-
-
       <button
         className={`button Castle__button__1 ${isClicked ? "none" : ""} ${isVisble ? "none" : ""}`}
         onClick={onClick}
       ></button>
-
-
-
-
-
-
-
-
-
 
       <div
         className={`Castle__button ${isClicked ? "" : "none"} ${isLvl7 ? "none" : ""} ${isVisble ? "none" : ""}`}

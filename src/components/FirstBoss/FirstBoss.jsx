@@ -4,16 +4,41 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Dialog from "../Dialog/Dialog";
 import { ClickerContext } from "../../context/ClickerContext";
 
-const FirstBoss = () => {
-  const [bossHp, setBossHp] = useState(60);
+const FirstBoss = (props) => {
+  const { setIsMuted, audioRef } = props;
+  const [bossHp, setBossHp] = useState(230);
   const [timer, setTimer] = useState(10);
   const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
-  const { dmgLvl } = useContext(ClickerContext);
+  const { dmgLvl, setCrabText, shell, setShell, bossCount, setBossCount } =
+    useContext(ClickerContext);
   const MultiClick = useRef(1);
 
-  
-    switch (dmgLvl) {
+  useEffect(() => {
+    if (bossCount === 1) {
+      setBossHp(900);
+    }
+  }, []);
+  useEffect(() => {
+    if (bossCount === 2) {
+      setBossHp(1500);
+    }
+  }, []);
+
+  console.log(bossHp);
+
+  const bossArray = [
+    { bossEmoji: "🦐", delitelPoloskiHp: 23 },
+    { bossEmoji: "🐙", delitelPoloskiHp: 90 },
+    { bossEmoji: "🦀", delitelPoloskiHp: 20 },
+  ];
+
+  // console.log(firstBossArray[0].pivo)
+  // console.log(bossArray[0].pivo)
+
+  // console.log(bossArray)
+
+  switch (dmgLvl) {
     case 1:
       MultiClick.current = 2;
       break;
@@ -35,25 +60,45 @@ const FirstBoss = () => {
     default:
   }
 
-  console.log(MultiClick.current)
+  // console.log(MultiClick.current)
 
-
-  let hp = Array.from({ length: bossHp / 6 }, () => "🟥");
+  let hp = Array.from(
+    { length: bossHp / bossArray[bossCount].delitelPoloskiHp },
+    () => "🟥",
+  );
   let timerArr = Array.from({ length: timer }, () => "🟦");
 
-  useEffect(() => {
-    //   setTimeout(() => {
-    //     navigate("/");
-    //     console.log('поражение')
-    //   },
-    // 10000);
+  // let intervalId;
+  // useEffect(() => {
+  //   intervalId = setTimeout(() => {
+  //     navigate("/");
+  //     console.log("поражение");
+  //   }, 10000);
+  //   clearInterval(intervalId);
 
-    let timerId;
-    timerId = setInterval(() => {
+  // }, [bossHp]); // таймер на босса настоящий я в душе не *** как он работает. а он и не работет)))
+
+  // console.log(hp.length <= 0);
+
+  useEffect(() => {
+    let timerId2;
+    timerId2 = setInterval(() => {
       setTimer((prev) => prev - 1);
     }, 1000);
-    return () => clearInterval(timerId);
-  }, []); // таймер на босса
+    return () => clearInterval(timerId2);
+  }, []); // таймер на босса декоративный
+
+  if (timer === 0) {
+    navigate("/");
+    console.log("поражение");
+    setCrabText("Я ещё вернусь...");
+    setTimeout(() => {
+      setCrabText("Улучшение клешни увеличивает урон");
+    }, 2000);
+    setTimeout(() => {
+      setCrabText("");
+    }, 4000);
+  }
 
   const bossUp = () => {
     setIsClicked(true);
@@ -63,17 +108,32 @@ const FirstBoss = () => {
   const onClick = () => {
     setBossHp((prev) => prev - MultiClick.current);
     bossUp();
+
+    setIsMuted(false);
+    audioRef.current.play();
+    audioRef.current.volume = 0.03;
   };
 
   useEffect(() => {
     // console.log(hp.length);
     if (hp.length <= 0) {
       navigate("/");
-      // console.log("Победа");
+      console.log("победа");
+      if (bossCount !== 2) {
+        setCrabText("С победой +1🐚");
+        setBossCount(bossCount + 1);
+        setShell(shell + 1);
+      }
+      if (bossCount === 2) {
+        setCrabText("Как-то странноя я себя чуствую");
+      }
+      setTimeout(() => {
+        setCrabText("");
+      }, 2000);
     }
   }, [bossHp]);
 
-  // console.log(bossHp);
+  // console.log(bossCount);
 
   return (
     <>
@@ -84,7 +144,7 @@ const FirstBoss = () => {
         className={`Boss ${isClicked ? "crabClicked" : ""}`}
         onClick={onClick}
       >
-        🦐
+        {bossArray[bossCount].bossEmoji}
       </div>
       <div
         className={`CrabB`}

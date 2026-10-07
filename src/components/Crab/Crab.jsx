@@ -12,7 +12,7 @@ const Crab = (props) => {
   const [isClickedForAnimation, setIsClickedForAnimation] = useState(false);
   const [clickedLimit, setClickedLimit] = useState(0);
   const [crabColdown, setCrabColdown] = useState(true);
-  const [bossCount, setBossCount] = useState(0);
+  const [bossCountForSpawn, setBossCountForSpawn] = useState(0);
   // const [dmgLvl, setDmgLvl] = useState(0);
   // const { chisloClicovPoText, setCrabText } = useContext(ClickerContext);
 
@@ -33,6 +33,7 @@ const Crab = (props) => {
   const MultiClick = useRef(1);
   const isTheFirstMessage = useRef(true);
   const price = useRef(25);
+  const shellPrice = useRef(0);
   let islvlMax = false;
 
   if (count > 0) {
@@ -56,18 +57,22 @@ const Crab = (props) => {
     case 2:
       MultiClick.current = 4;
       price.current = 225;
+      shellPrice.current = 1;
       break;
     case 3:
       MultiClick.current = 8;
       price.current = 675;
+      shellPrice.current = 0;
       break;
     case 4:
       MultiClick.current = 16;
       price.current = 2000;
+      shellPrice.current = 1;
       break;
     case 5:
       MultiClick.current = 32;
       price.current = 6000;
+      shellPrice.current = 0;
       break;
     case 6:
       MultiClick.current = 64;
@@ -84,14 +89,14 @@ const Crab = (props) => {
       setClickedLimit((prev) => {
         return prev + 1;
       });
-      setBossCount((prev) => {
+      setBossCountForSpawn((prev) => {
         return prev + 1;
       });
       crabUp();
 
       setIsMuted(false);
       audioRef.current.play();
-      audioRef.current.volume = 0.3;
+      audioRef.current.volume = 0.1;
 
       if (isTheFirstMessage.current) {
         isTheFirstMessage.current = false;
@@ -134,6 +139,7 @@ const Crab = (props) => {
           children={`🔨урон:${MultiClick.current}`}
           count={count}
           price={price.current}
+          shellPrice={shellPrice.current}
           islvlMax={islvlMax}
         />
       </div>
@@ -141,7 +147,7 @@ const Crab = (props) => {
       <div className={`click ${isClickedForAnimation ? "animation" : ""}`}>
         +{MultiClick.current}
       </div>
-      <PreBoss bossCount={bossCount} setBossCount={setBossCount} />
+      <PreBoss bossCountForSpawn={bossCountForSpawn} setBossCountForSpawn={setBossCountForSpawn} />
     </div>
   );
 };

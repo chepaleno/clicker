@@ -4,28 +4,45 @@ import "../../styles/global.css";
 import { ClickerContext } from "../../context/ClickerContext";
 
 const Upgrade = (props) => {
-  const { children, count, setCount, price, islvlMax } = props;
-  const { dmgLvl, setDmgLvl } = useContext(ClickerContext);
+  const { children, count, setCount, price, islvlMax, shellPrice } = props;
+  const { dmgLvl, setDmgLvl, shell, setShell } = useContext(ClickerContext);
   const isHaveMoneyForUpgrade = useRef(false);
-  const isButtonPressed = useRef(false)
+  const isButtonPressed = useRef(false);
   let isClicked = false;
   let isVisble = false;
+  let isVisibleForFirstBtn = false;
+  let isVisibleForShell = false
 
-  if (price - 1 >= count) {
+  if (price - 1 >= count || shellPrice - 1 >= shell) {
     isVisble = true;
   }
 
+  if (shellPrice >= 1){
+    isVisibleForShell = true
+  }
+
+  if (price - 1 >= count) {
+    isVisibleForFirstBtn = true;
+  }
+  // console.log(shellPrice && shell)
+  // console.log(price - 1 >= count);
+  // console.log(shellPrice >= shell);
+  // console.log(price - 1 >= count && shellPrice >= shell);
+  //   console.log(shellPrice)
+  //  console.log(shell)
+
   if (dmgLvl >= 1) {
     isButtonPressed.current = true;
-    isClicked = true
+    isClicked = true;
   }
 
   const onUpgradeClick = () => {
-    if (count >= price) {
+    if (count >= price && shell >= shellPrice) {
       isHaveMoneyForUpgrade.current = true;
       setDmgLvl((prev) => prev + 1);
       setCount(count - price);
-      isClicked = true
+      setShell(shell - shellPrice);
+      isClicked = true;
     } else {
       console.log("недостаточно средств");
     }
@@ -34,14 +51,15 @@ const Upgrade = (props) => {
   return (
     <div>
       <button
-        className={`button Castle__button__2 ${isVisble ? "none" : ""} ${isClicked ? "none" : ""} `}
+        className={`button Castle__button__2 ${isVisibleForFirstBtn ? "none" : ""} ${isClicked ? "none" : ""} `}
         onClick={onUpgradeClick}
       ></button>
 
       <div className={`${isButtonPressed.current ? "" : "none"}`}>
         {children} <br />
-        🆙lvl:{`${islvlMax ? "max" : dmgLvl} `} <br /> 🥮цена:
-        {`${islvlMax ? "max" : price}`}
+        🆙lvl:{`${islvlMax ? "max" : dmgLvl} `}
+        <br /> 🥮цена:{`${islvlMax ? "max" : price}`}
+        <div className={`${isVisibleForShell ? '' : 'none'}`}>🐚цена:{shellPrice}</div>
       </div>
       <div
         onClick={onUpgradeClick}

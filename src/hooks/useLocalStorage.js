@@ -2,8 +2,8 @@ import { useContext, useEffect, useRef, useState } from "react"
 import { ClickerContext } from "../context/ClickerContext"
 
 const useLocalStorage = () => {
-    const { crabText, setCrabText, chisloClicovPoText, dmgLvl, castleLvl, count, setCount } = useContext(ClickerContext)
-    const defaultSave = { crabText: "Привет, нажми на текст", count: 0, dmgLvl: 0, castleLvl: 0, chisloClicovPoText: 0 }
+    const { crabText, setCrabText, chisloClicovPoText, dmgLvl, castleLvl, count, setCount, shell, bossCount, freeMod } = useContext(ClickerContext)
+    const defaultSave = { crabText: "Привет, нажми на текст", count: 0, dmgLvl: 0, castleLvl: 0, chisloClicovPoText: 0, shell: 0, bossCount:0 }
     // const realSave = { crabText: crabText, count: count, dmgLvl: dmgLvl, castleLvl: castleLvl, chisloClicovPoText: chisloClicovPoText }
 
     // const [save, setSave] = useState(() => {
@@ -15,7 +15,7 @@ const useLocalStorage = () => {
     // setCount(save.count ? save.count : 0)
 
     useEffect(() => {
-        localStorage.setItem('clickerSave', JSON.stringify({ crabText, chisloClicovPoText, dmgLvl, castleLvl, count })) 
+        localStorage.setItem('clickerSave', JSON.stringify({ crabText, chisloClicovPoText, dmgLvl, castleLvl, count, shell, bossCount, freeMod })) 
     }, [count])
 
 }

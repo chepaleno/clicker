@@ -18,6 +18,9 @@ const Dialog = () => {
         break;
       case 2:
         setCrabText("Кликай по мне и выигрывай, удачи");
+        setTimeout(() => {
+          setCrabText("");
+        }, 2000);
         break;
       default:
         setCrabText("");
