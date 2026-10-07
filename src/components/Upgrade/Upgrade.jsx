@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import "./Upgrade.css";
 import "../../styles/global.css";
 import { ClickerContext } from "../../context/ClickerContext";
@@ -11,25 +11,19 @@ const Upgrade = (props) => {
   let isClicked = false;
   let isVisble = false;
   let isVisibleForFirstBtn = false;
-  let isVisibleForShell = false
+  let isVisibleForShell = false;
 
   if (price - 1 >= count || shellPrice - 1 >= shell) {
     isVisble = true;
   }
 
-  if (shellPrice >= 1){
-    isVisibleForShell = true
+  if (shellPrice >= 1) {
+    isVisibleForShell = true;
   }
 
   if (price - 1 >= count) {
     isVisibleForFirstBtn = true;
   }
-  // console.log(shellPrice && shell)
-  // console.log(price - 1 >= count);
-  // console.log(shellPrice >= shell);
-  // console.log(price - 1 >= count && shellPrice >= shell);
-  //   console.log(shellPrice)
-  //  console.log(shell)
 
   if (dmgLvl >= 1) {
     isButtonPressed.current = true;
@@ -54,12 +48,13 @@ const Upgrade = (props) => {
         className={`button Castle__button__2 ${isVisibleForFirstBtn ? "none" : ""} ${isClicked ? "none" : ""} `}
         onClick={onUpgradeClick}
       ></button>
-
-      <div className={`${isButtonPressed.current ? "" : "none"}`}>
+      <div className={` crabText ${isButtonPressed.current ? "" : "none"}`}>
         {children} <br />
         🆙lvl:{`${islvlMax ? "max" : dmgLvl} `}
         <br /> 🥮цена:{`${islvlMax ? "max" : price}`}
-        <div className={`${isVisibleForShell ? '' : 'none'}`}>🐚цена:{shellPrice}</div>
+        <div className={`${isVisibleForShell ? "" : "none"}`}>
+          🐚цена:{shellPrice}
+        </div>
       </div>
       <div
         onClick={onUpgradeClick}

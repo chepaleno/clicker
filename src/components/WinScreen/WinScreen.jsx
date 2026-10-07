@@ -2,11 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import "./WinScreen.css";
 import { ClickerContext } from "../../context/ClickerContext";
 
-const WinScreen = (props) => {
-  const { theFinal } = props;
+const WinScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { bossCount, setFreeMod } = useContext(ClickerContext);
-  console.log(bossCount);
   useEffect(() => {
     requestAnimationFrame(() => setIsVisible(true));
   }, []);
@@ -15,13 +13,9 @@ const WinScreen = (props) => {
     finalFraza =
       "... а нет, батю ты пустил на крабовый салат.(это было опционально)";
   }
-  const onClick = () => {
-    // theFinal = false
-    setFreeMod(false);
+  const onFinalClick = () => {
+    setFreeMod(true);
   };
-  // finalFraza =
-  //   "... а нет, батю ты пустил на крабовый салат.(это было опционально)";
-  // const ewq = "крабий батя.";
 
   return (
     <div className={`container ${isVisible ? "isVisible" : ""}`}>
@@ -34,7 +28,7 @@ const WinScreen = (props) => {
           <br />
           made by: Микро Ивашка
         </span>
-        <button className="winButton" onClick={onClick}>
+        <button className="winButton" onClick={onFinalClick}>
           Свободный режим
         </button>
       </div>

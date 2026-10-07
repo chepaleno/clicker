@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import "./FirstBoss.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Dialog from "../Dialog/Dialog";
 import { ClickerContext } from "../../context/ClickerContext";
 
@@ -25,18 +25,11 @@ const FirstBoss = (props) => {
     }
   }, []);
 
-  console.log(bossHp);
-
   const bossArray = [
     { bossEmoji: "🦐", delitelPoloskiHp: 23 },
     { bossEmoji: "🐙", delitelPoloskiHp: 90 },
     { bossEmoji: "🦀", delitelPoloskiHp: 20 },
   ];
-
-  // console.log(firstBossArray[0].pivo)
-  // console.log(bossArray[0].pivo)
-
-  // console.log(bossArray)
 
   switch (dmgLvl) {
     case 1:
@@ -60,25 +53,11 @@ const FirstBoss = (props) => {
     default:
   }
 
-  // console.log(MultiClick.current)
-
   let hp = Array.from(
     { length: bossHp / bossArray[bossCount].delitelPoloskiHp },
     () => "🟥",
   );
   let timerArr = Array.from({ length: timer }, () => "🟦");
-
-  // let intervalId;
-  // useEffect(() => {
-  //   intervalId = setTimeout(() => {
-  //     navigate("/");
-  //     console.log("поражение");
-  //   }, 10000);
-  //   clearInterval(intervalId);
-
-  // }, [bossHp]); // таймер на босса настоящий я в душе не *** как он работает. а он и не работет)))
-
-  // console.log(hp.length <= 0);
 
   useEffect(() => {
     let timerId2;
@@ -90,7 +69,6 @@ const FirstBoss = (props) => {
 
   if (timer === 0) {
     navigate("/");
-    console.log("поражение");
     setCrabText("Я ещё вернусь...");
     setTimeout(() => {
       setCrabText("Улучшение клешни увеличивает урон");
@@ -115,10 +93,8 @@ const FirstBoss = (props) => {
   };
 
   useEffect(() => {
-    // console.log(hp.length);
     if (hp.length <= 0) {
       navigate("/");
-      console.log("победа");
       if (bossCount !== 2) {
         setCrabText("С победой +1🐚");
         setBossCount(bossCount + 1);
@@ -133,8 +109,6 @@ const FirstBoss = (props) => {
     }
   }, [bossHp]);
 
-  // console.log(bossCount);
-
   return (
     <>
       <div className="dialog">
@@ -146,12 +120,7 @@ const FirstBoss = (props) => {
       >
         {bossArray[bossCount].bossEmoji}
       </div>
-      <div
-        className={`CrabB`}
-        // onClick={onClick}
-      >
-        🦀
-      </div>
+      <div className={`CrabB`}>🦀</div>
       <div className="hp">❤️ {hp}</div>
       <div className="timer">⏱️ {timerArr}</div>
     </>

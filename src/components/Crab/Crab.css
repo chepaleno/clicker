@@ -24,6 +24,9 @@
 
 .Blur {
   filter: grayscale(100%);
+  &:hover {
+  cursor: default;
+}
 }
 
 .crabClicked {
@@ -42,6 +45,7 @@
   position: absolute;
   margin-top: 200px;
   margin-left: 185px;
+  user-select: none;
 }
 
 @keyframes slidein {
@@ -61,6 +65,7 @@
   margin-top: 200px;
   margin-left: 125px;
   opacity: 0;
+  user-select: none;
 }
 .animation {
   animation: slidein 60ms;

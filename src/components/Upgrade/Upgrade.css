@@ -34,3 +34,6 @@
 .Castle__button__2:hover::before {
   content: "🔨 25 очков";
 }
+.crabText{
+user-select: none;
+}

@@ -4,8 +4,6 @@ export const ClickerContext = createContext({});
 
 export const ClickerProvider = ({ children }) => {
   const initional = JSON.parse(localStorage.getItem('clickerSave')) || {}
-  // console.log(initional)
-  // console.log(initional.count)
   const [count, setCount] = useState(initional.count ?? 0);
   const [shell, setShell] = useState(initional.shell ?? 0)
   const [crabText, setCrabText] = useState(initional.crabText ?? "Привет, нажми на текст");
@@ -13,7 +11,7 @@ export const ClickerProvider = ({ children }) => {
   const [dmgLvl, setDmgLvl] = useState(initional.dmgLvl ?? 0);
   const [castleLvl, setCastleLvl] = useState(initional.castleLvl ?? 0);
   const [bossCount, setBossCount] = useState(initional.bossCount ?? 0);
-  const [freeMod, setFreeMod] = useState(initional.bossCount ?? true);
+  const [freeMod, setFreeMod] = useState(initional.freeMod ?? false);
 
 
   const value = {

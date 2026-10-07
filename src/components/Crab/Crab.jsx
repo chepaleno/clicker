@@ -13,15 +13,8 @@ const Crab = (props) => {
   const [clickedLimit, setClickedLimit] = useState(0);
   const [crabColdown, setCrabColdown] = useState(true);
   const [bossCountForSpawn, setBossCountForSpawn] = useState(0);
-  // const [dmgLvl, setDmgLvl] = useState(0);
-  // const { chisloClicovPoText, setCrabText } = useContext(ClickerContext);
 
-  const {
-    dmgLvl,
-    setDmgLvl,
-    setCrabText,
-    // MultiClick
-  } = useContext(ClickerContext);
+  const { dmgLvl, setDmgLvl, setCrabText } = useContext(ClickerContext);
 
   const crabUp = () => {
     setIsClicked(true);
@@ -39,15 +32,6 @@ const Crab = (props) => {
   if (count > 0) {
     isTheFirstMessage.current = false;
   }
-
-  // if (bossCount === 10) {
-  //   setCrabText("пиздец");
-  //   setTimeout(() => {
-  //     setCrabText("");
-  //   }, 1000);
-  // }
-  // if (bossCount === 100) {
-  // }
 
   switch (dmgLvl) {
     case 1:
@@ -147,7 +131,10 @@ const Crab = (props) => {
       <div className={`click ${isClickedForAnimation ? "animation" : ""}`}>
         +{MultiClick.current}
       </div>
-      <PreBoss bossCountForSpawn={bossCountForSpawn} setBossCountForSpawn={setBossCountForSpawn} />
+      <PreBoss
+        bossCountForSpawn={bossCountForSpawn}
+        setBossCountForSpawn={setBossCountForSpawn}
+      />
     </div>
   );
 };

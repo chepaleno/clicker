@@ -57,8 +57,6 @@ const PreBoss = (props) => {
     }
   }, [bossCountForSpawn]);
 
-  // console.log(bossCountForSpawn);
-
   const onClick = () => {
     if (bossCount === 0) {
       setCrabText("пипец тебе криветка");

@@ -9,6 +9,7 @@ body {
   font-style: normal;
   zoom: 150%; 
   position: fixed;
+  user-select: none;
 }
 
 .button {

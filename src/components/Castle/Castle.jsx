@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useRef, useContext } from "react";
 import "../../styles/global.css";
 import "./Castle.css";
 import { ClickerContext } from "../../context/ClickerContext";
@@ -6,8 +6,6 @@ import { ClickerContext } from "../../context/ClickerContext";
 const Castle = (props) => {
   const { count, setCount } = props;
   const { castleLvl, setCastleLvl, setCrabText } = useContext(ClickerContext);
-  // const [castleLvl, setCastleLvl] = useState(0);
-  // const [isClicked, setIsClicked] = useState(false);
   let isClicked = false;
   const price = useRef(50);
   let isLvl4 = false;
@@ -79,8 +77,6 @@ const Castle = (props) => {
       setCount(count - price.current);
       setCastleLvl((prev) => prev + 1);
       isClicked = true;
-      // trigger = true
-      // console.log(trigger)
       if (castleLvl === 0) {
         setCrabText("Это мой дом");
         setTimeout(() => {
@@ -122,46 +118,6 @@ const Castle = (props) => {
       console.log("недостаточно средств");
     }
   };
-
-  // useEffect(() => {
-  //   if (castleLvl === 1) {
-  //     setCrabText("Это мой дом");
-  //     setTimeout(() => {
-  //       setCrabText("");
-  //     }, 2000);
-  //     trigger = false
-  //   }
-  //   if (castleLvl === 2) {
-  //     setCrabText("Мне нравится в нём жить");
-  //     setTimeout(() => {
-  //       setCrabText("");
-  //     }, 2000);
-  //   }
-  //   if (castleLvl === 3) {
-  //     setCrabText("Ого их уже 3");
-  //     setTimeout(() => {
-  //       setCrabText("");
-  //     }, 2000);
-  //   }
-  //   if (castleLvl === 4) {
-  //     setCrabText("Они растут");
-  //     setTimeout(() => {
-  //       setCrabText("");
-  //     }, 2000);
-  //   }
-  //   if (castleLvl === 5) {
-  //     setCrabText("Всё ещё растут");
-  //     setTimeout(() => {
-  //       setCrabText("");
-  //     }, 2000);
-  //   }
-  //   if (castleLvl === 6) {
-  //     setCrabText("Совсем большие");
-  //     setTimeout(() => {
-  //       setCrabText("");
-  //     }, 2000);
-  //   }
-  // }, [trigger]);
 
   return (
     <div>
