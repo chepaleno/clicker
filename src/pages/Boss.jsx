@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import bobImage from "../assets/bob.png";
+import bobImage from "../assets/bob.webp";
 import "../pages/Boss.css";
 import FirstBoss from "../components/FirstBoss/FirstBoss";
 import mus from "../assets/mus/battlem.mp3";

@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { ClickerContext } from "../context/ClickerContext";
 import WinScreen from "../components/WinScreen/WinScreen";
 import "../pages/Home.css";
+import mainImage from "../assets/main.webp";
 
 const Home = (props) => {
   const { count, setCount } = props;
@@ -47,10 +48,7 @@ const Home = (props) => {
   return (
     <div
       className={`fullScreenDiv`}
-      style={{
-        backgroundImage:
-          "url('https://i.pinimg.com/originals/a0/bc/ce/a0bcce04cd9c1ce026508369c9de6e03.png?nii=t')",
-      }}
+      style={{ backgroundImage: `url(${mainImage})` }}
     >
       {theFinal && <WinScreen theFinal={theFinal} />}
       <audio ref={audioRef} muted={isMuted} src={mus}></audio>
