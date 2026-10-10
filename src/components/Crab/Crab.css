@@ -6,16 +6,11 @@
   display: none;
 }
 
-.fullScreenDiv {
-  width: 100vw;
-  height: 100vh;
-}
-
 .Crab {
-  font-size: 40px;
+  font-size:65px;
   position: absolute;
-  margin-top: 200px;
-  margin-left: 140px;
+  margin-top: 400px;
+  margin-left: 350px;
 }
 
 .Crab:hover {
@@ -41,29 +36,29 @@
 }
 
 .Z {
-  font-size: 20px;
+  font-size: 35px;
   position: absolute;
-  margin-top: 200px;
-  margin-left: 185px;
+  margin-top: 400px;
+  margin-left: 370px;
   user-select: none;
 }
 
 @keyframes slidein {
   from {
-    margin-top: 200px;
+    margin-top: 400px;
     opacity: 1;
   }
 
   to {
-    margin-top: 180px;
+    margin-top: 380px;
     opacity: 0;
   }
 }
 .click {
-  font-size: 10px;
+  font-size: 15px;
   position: absolute;
-  margin-top: 200px;
-  margin-left: 125px;
+  margin-top: 400px;
+  margin-left: 335px;
   opacity: 0;
   user-select: none;
 }

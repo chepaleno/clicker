@@ -81,38 +81,38 @@ const Castle = (props) => {
         setCrabText("Это мой дом");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
         trigger = false;
       }
       if (castleLvl === 1) {
         setCrabText("Мне нравится в нём жить");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
       if (castleLvl === 2) {
         setCrabText("Ого их уже 3");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
       if (castleLvl === 3) {
         setCrabText("Они растут");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
       if (castleLvl === 4) {
         setCrabText("Всё ещё растут");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
       if (castleLvl === 5) {
         setCrabText("Совсем большие");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
     } else {
       console.log("недостаточно средств");
@@ -139,9 +139,10 @@ const Castle = (props) => {
         ⬆️
       </div>
       <div className={`Castle__text ${isClicked ? "" : "none"}`}>
-        lvl:{`${isLvl7 ? "max" : castleLvl} `} <br />
-        цена:{`${isLvl7 ? "max" : price.current} `}
-        <br /> доход:{income}
+        🆙lvl:{`${isLvl7 ? "max" : castleLvl} `}
+        <br /> 🔨доход:{income}
+        <br />
+        🥮цена:{`${isLvl7 ? "max" : price.current} `}
       </div>
     </div>
   );

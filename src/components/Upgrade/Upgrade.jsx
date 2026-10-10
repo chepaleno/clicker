@@ -49,8 +49,8 @@ const Upgrade = (props) => {
         onClick={onUpgradeClick}
       ></button>
       <div className={` crabText ${isButtonPressed.current ? "" : "none"}`}>
-        {children} <br />
-        🆙lvl:{`${islvlMax ? "max" : dmgLvl} `}
+        🆙lvl:{`${islvlMax ? "max" : dmgLvl} `}<br />
+        {children} 
         <br /> 🥮цена:{`${islvlMax ? "max" : price}`}
         <div className={`${isVisibleForShell ? "" : "none"}`}>
           🐚цена:{shellPrice}

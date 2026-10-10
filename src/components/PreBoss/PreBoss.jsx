@@ -15,7 +15,7 @@ const PreBoss = (props) => {
         setCrabText("Ты чувствуешь чьё-то злобное внимание...");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
       if (bossCountForSpawn >= 45 && bossCountForSpawn < 60) {
         isVisible.current = true;
@@ -30,7 +30,7 @@ const PreBoss = (props) => {
         setCrabText("Ты чувствуешь дрожь из под земли...");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
       if (bossCountForSpawn >= 90 && bossCountForSpawn < 120) {
         isVisible.current = true;
@@ -41,40 +41,42 @@ const PreBoss = (props) => {
       }
     }
     if (bossCount === 2) {
-      if (bossCountForSpawn === 150) {
+      if (bossCountForSpawn === 100) {
         setCrabText("Воздух вокруг холодеет...");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
-      if (bossCountForSpawn >= 200 && bossCountForSpawn < 300) {
+      if (bossCountForSpawn >= 150 && bossCountForSpawn < 200) {
         isVisible.current = true;
       }
-      if (bossCountForSpawn >= 300) {
+      if (bossCountForSpawn >= 200) {
         isVisible.current = false;
         isVisibleSec.current = true;
       }
+    }
+    if (bossCount >= 3) {
     }
   }, [bossCountForSpawn]);
 
   const onClick = () => {
     if (bossCount === 0) {
-      setCrabText("пипец тебе криветка");
+      setCrabText("Кликай по криветке!");
       setTimeout(() => {
         setCrabText("");
-      }, 2000);
+      }, 3000);
     }
-        if (bossCount === 1) {
-      setCrabText("я тебя на салат пущу");
+    if (bossCount === 1) {
+      setCrabText("Я тебя на салат пущу!");
       setTimeout(() => {
         setCrabText("");
-      }, 2000);
+      }, 3000);
     }
-        if (bossCount === 2) {
+    if (bossCount === 2) {
       setCrabText("Отец?...");
       setTimeout(() => {
         setCrabText("");
-      }, 2000);
+      }, 3000);
     }
   };
 

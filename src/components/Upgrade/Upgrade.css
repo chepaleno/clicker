@@ -1,13 +1,14 @@
 .upgradeDmg {
   font-size: 10px;
   position: absolute;
-  margin-top: 260px;
-  margin-left: 128px;
+  margin-top: 500px;
+  margin-left: 300px;
+
 }
 
 .lvlUpButton {
-  font-size: 20px;
-  margin-top: -34px;
+  font-size: 32px;
+  margin-top: -60px;
   margin-left: -32px;
   user-select: none;
   &:hover {
@@ -23,8 +24,10 @@
   position: absolute;
   margin-top: -5px;
   margin-left: -8px;
-  width: 95px;
-  height: 44.8px;
+    width: 220px;
+  height: 75px;
+  font-size: 15px;
+
 }
 
 .Castle__button__2::before {
@@ -36,4 +39,6 @@
 }
 .crabText{
 user-select: none;
+  font-size: 20px;
+   margin-left: 20px;
 }

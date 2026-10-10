@@ -87,7 +87,7 @@ const Crab = (props) => {
         setCrabText("Поздравляю с первым кликом");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
       }
     } else {
       console.log("чил");

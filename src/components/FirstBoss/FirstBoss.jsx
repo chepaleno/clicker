@@ -6,7 +6,7 @@ import { ClickerContext } from "../../context/ClickerContext";
 
 const FirstBoss = (props) => {
   const { setIsMuted, audioRef } = props;
-  const [bossHp, setBossHp] = useState(230);
+  const [bossHp, setBossHp] = useState(210);
   const [timer, setTimer] = useState(10);
   const [isClicked, setIsClicked] = useState(false);
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const FirstBoss = (props) => {
 
   useEffect(() => {
     if (bossCount === 1) {
-      setBossHp(900);
+      setBossHp(830);
     }
   }, []);
   useEffect(() => {
@@ -26,8 +26,8 @@ const FirstBoss = (props) => {
   }, []);
 
   const bossArray = [
-    { bossEmoji: "🦐", delitelPoloskiHp: 23 },
-    { bossEmoji: "🐙", delitelPoloskiHp: 90 },
+    { bossEmoji: "🦐", delitelPoloskiHp: 21 },
+    { bossEmoji: "🐙", delitelPoloskiHp: 83 },
     { bossEmoji: "🦀", delitelPoloskiHp: 20 },
   ];
 
@@ -72,10 +72,10 @@ const FirstBoss = (props) => {
     setCrabText("Я ещё вернусь...");
     setTimeout(() => {
       setCrabText("Улучшение клешни увеличивает урон");
-    }, 2000);
+    }, 3000);
     setTimeout(() => {
       setCrabText("");
-    }, 4000);
+    }, 6000);
   }
 
   const bossUp = () => {
@@ -102,15 +102,16 @@ const FirstBoss = (props) => {
       }
       if (bossCount === 2) {
         setCrabText("Как-то странноя я себя чуствую");
+        setBossCount(bossCount + 1);
       }
       setTimeout(() => {
         setCrabText("");
-      }, 2000);
+      }, 3000);
     }
   }, [bossHp]);
 
   return (
-    <>
+    <> 
       <div className="dialog">
         <Dialog />
       </div>

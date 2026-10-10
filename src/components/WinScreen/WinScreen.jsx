@@ -9,7 +9,7 @@ const WinScreen = () => {
     requestAnimationFrame(() => setIsVisible(true));
   }, []);
   let finalFraza = "крабий батя.";
-  if (bossCount === 2) {
+  if (bossCount >= 3) {
     finalFraza =
       "... а нет, батю ты пустил на крабовый салат.(это было опционально)";
   }

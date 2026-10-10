@@ -1,7 +1,8 @@
 .preBossButton {
   position: absolute;
-  margin-top: 40px;
-  margin-left: 450px;
+  margin-top: 90px;
+  margin-left: 800px;
+  font-size: 30px;
 }
 
 .none {
@@ -10,10 +11,10 @@
 
 .bossButton {
   position: absolute;
-  margin-top: 40px;
-  margin-left: 450px;
-  padding: 10px 26px;
-  border-radius: 12px;
+  margin-top: 90px;
+  margin-left: 800px;
+  padding: 20px 52px;
+  border-radius:12px;
   border: 2px solid #2a5f7a;
   cursor: pointer;
   text-decoration: none;
@@ -23,7 +24,7 @@
   color: #d7f0f5;
 
   font-family: "Pixelify Sans", sans-serif;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 1px;
 

@@ -9,6 +9,7 @@ import { ClickerContext } from "../context/ClickerContext";
 import WinScreen from "../components/WinScreen/WinScreen";
 import "../pages/Home.css";
 import mainImage from "../assets/main.webp";
+import Menu from "../components/Menu/Menu";
 
 const Home = (props) => {
   const { count, setCount } = props;
@@ -52,41 +53,32 @@ const Home = (props) => {
     >
       {theFinal && <WinScreen theFinal={theFinal} />}
       <audio ref={audioRef} muted={isMuted} src={mus}></audio>
-      <Link to="/" className={freeMod ? "" : "none"}>
-        Home
-      </Link>
-      <Link to="/boss" className={freeMod ? "" : "none"}>
-        Boss
-      </Link>
       <Crab
         count={count}
         setCount={setCount}
         setIsMuted={setIsMuted}
         audioRef={audioRef}
       />
-      <div className="count">счёт:{count}</div>
+      <div className="count">Счёт:{count}</div>
       <div className="count">🐚:{shell}</div>
-      <div onClick={onClick} className={freeMod ? "" : "none"}>
-        удалить сейв
-      </div>
+
       <Castle
         count={count}
         setCount={setCount}
         shell={shell}
         setShell={setShell}
       />
-      <div onClick={cheatClick} className={freeMod ? "" : "none"}>
-        +1000
-      </div>{" "}
-      {/* читы */}
-      <div onClick={cheatShellClick} className={freeMod ? "" : "none"}>
-        +1000 shell
-      </div>{" "}
-      {/* читы */}
-      <div onClick={bossCountplusone} className={freeMod ? "" : "none"}>
-        +1lvlboss
-      </div>{" "}
-      {/* читы */}
+      <div className={freeMod ? "" : "none"}>
+        <Menu
+          count={count}
+          setCount={setCount}
+          shell={shell}
+          setShell={setShell}
+          bossCount={bossCount}
+          setBossCount={setBossCount}
+          onDeleteSave={onClick}
+        />
+      </div>
     </div>
   );
 };

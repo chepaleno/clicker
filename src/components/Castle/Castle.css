@@ -1,9 +1,10 @@
 .Castle__button__1 {
   position: absolute;
-  margin-top: 210px;
-  margin-left: 400px;
-  width: 95px;
-  height: 44.8px;
+  margin-top: 410px;
+  margin-left: 700px;
+  width: 260px;
+  height: 75px;
+  font-size: 15px;
 }
 
 .Castle__button__1::before {
@@ -16,11 +17,10 @@
 
 .Castle__button {
   position: absolute;
-  margin-top: 230px;
-  margin-left: 400px;
-  width: 95px;
+  margin-top: 440px;
+  margin-left: 670px; 
   user-select: none;
-  scale: 1.2;
+  font-size: 32px;
 
   &:hover {
     cursor: pointer;
@@ -32,8 +32,9 @@
   display: flex;
   flex-direction: row;
   position: absolute;
-  margin-top: 190px;
-  margin-left: 413px;
+  margin-top: 360px;
+  margin-left: 713px;
+    font-size: 30px;
 }
 
 .none {
@@ -43,9 +44,9 @@
 .Castle__text {
   user-select: none;
   position: absolute;
-  margin-top: 224px;
-  margin-left: 423px;
-  font-size: 12px;
+  margin-top: 424px;
+  margin-left: 723px;
+  font-size: 20px;
 }
 
 .lvl4Up {
@@ -62,6 +63,6 @@
 
 .lvl7Up {
   scale: 3;
-  margin-left: 450px;
-  margin-top: 180px;
+  margin-left: 775px;
+  margin-top: 330px;
 }

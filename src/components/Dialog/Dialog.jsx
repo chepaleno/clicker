@@ -20,7 +20,7 @@ const Dialog = () => {
         setCrabText("Кликай по мне и выигрывай, удачи");
         setTimeout(() => {
           setCrabText("");
-        }, 2000);
+        }, 3000);
         break;
       default:
         setCrabText("");
