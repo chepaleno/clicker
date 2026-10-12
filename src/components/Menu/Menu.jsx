@@ -76,26 +76,21 @@ const Menu = (props) => {
           <Link to="/" className="menuButton menuButton--blue">
             🏠 Home
           </Link>
-          <Link to="/boss" className="menuButton menuButton--blue">
+          {/* <Link to="/boss" className="menuButton menuButton--blue">
             ⚔️ Boss
-          </Link>
+          </Link> */}
+          <div className="menuSection">
+            <a
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="menuButton menuButton--blue"
+            >
+              ⚔️ Boss
+            </a>
+          </div>
         </div>
-
-        <div className="menuSection">
-          <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="menuButton menuButton--ghost"
-          >
-            Не нажимать
-          </a>
-        </div>
-
-        <button
-          className="menuButton menuButton--red"
-          onClick={onDeleteSave}
-        >
+        <button className="menuButton menuButton--red" onClick={onDeleteSave}>
           🗑️ Удалить сейв
         </button>
 
